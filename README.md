@@ -27,3 +27,11 @@ const offer: {
 - Enum
 https://www.typescriptlang.org/docs/handbook/enums.html
 - any
+
+#### Union Types
+e.g.
+```javascript
+function add(input: number | string){
+  console.log(input);
+}
+```
