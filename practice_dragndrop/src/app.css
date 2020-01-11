@@ -1,15 +1,30 @@
 :root {
   --primary: #ff0062;
+  --secondary: #a80041;
+  --accent: #0044ff;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// minimal reset
 
 html {
   font-family: sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+*, *:after, *:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 label,
@@ -53,8 +68,8 @@ button:focus {
 
 button:hover,
 button:active {
-  background: #a80041;
-  border-color: #a80041;
+  background: var(--secondary);
+  border-color: var(--secondary);
 }
 
 .projects {
@@ -71,11 +86,11 @@ button:active {
 }
 
 #finished-projects {
-  border-color: #0044ff;
+  border-color: var(--accent);
 }
 
 #finished-projects header {
-  background: #0044ff;
+  background: var(--accent);
 }
 
 .projects h2 {
@@ -101,7 +116,7 @@ button:active {
 }
 
 #finished-projects li h2 {
-  color: #0044ff;
+  color: var(--accent);
 }
 
 .projects li h3 {
