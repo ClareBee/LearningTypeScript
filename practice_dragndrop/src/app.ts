@@ -47,6 +47,39 @@ function autobind(_: any, _2: string, descriptor: PropertyDescriptor){
     return adjustedDescriptor;
 }
 
+// project list class
+
+class ProjectList {
+  // fields
+  templateElement: HTMLTemplateElement; // available due to dom lib in tsconfig
+  hostElement: HTMLDivElement;
+  element: HTMLElement; // no section element available therefore generic
+
+// passing in private automatically creates property with name of parameter
+  constructor(private type: 'active' | 'finished'){
+    this.templateElement = document.getElementById('project-list')! as HTMLTemplateElement;
+    this.hostElement = document.getElementById('app')! as HTMLDivElement;
+
+    const importedNode = document.importNode(this.templateElement.content, true);
+    this.element = importedNode.firstElementChild as HTMLElement;
+    this.element.id = `${this.type}-projects`;
+    this.attach();
+    this.renderContent();
+  }
+
+  private renderContent(){
+    const listId = `${this.type}-projects-list`;
+    this.element.querySelector('ul')!.id = listId;
+    this.element.querySelector('h2')!.textContent = this.type.toUpperCase() + ' Projects'
+  }
+
+  private attach(){
+    // before closing tag of element
+    this.hostElement.insertAdjacentElement('beforeend', this.element);
+  }
+}
+
+
 // project input class
 
 class ProjectInput {
@@ -132,3 +165,5 @@ class ProjectInput {
 }
 
 const newProjInput = new ProjectInput();
+const activeProjectList = new ProjectList('active');
+const finishedProjectList = new ProjectList('finished');
