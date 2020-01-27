@@ -1,5 +1,22 @@
 ## TypeScript
 ----
+Basic Setup:
+```
+tsc --init
+```
+Add:
+```json
+"outDir": "dist",
+"sourceMap": true
+  ```
+
+```
+<!-- lite server -->
+npm start
+<!-- watch mode -->
+tsc -w
+```
+----
 ### Learning Notes
 
 #### Core Types
@@ -35,3 +52,8 @@ function add(input: number | string){
   console.log(input);
 }
 ```
+#### Literal Types
+- exact value e.g. const number = 1.3;
+(convert to number? `+variableName or ParseFloat(variableName)`)
+
+#### Type Aliases/Custom Types
