@@ -37,7 +37,6 @@ class ProjectState {
         this.listeners.push(listenerFn);
     }
     addProject(title, description, numOfPeople) {
-        console.log('wtf', title);
         const newProject = new Project(Math.random().toString(), title, description, numOfPeople, ProjectStatus.Active);
         this.projects.push(newProject);
         console.log('new', newProject, this.projects);
@@ -96,7 +95,14 @@ class ProjectList {
         this.element = importedNode.firstElementChild;
         this.element.id = `${this.type}-projects`;
         projState.addListener((projects) => {
-            this.assignedProjects = projects;
+            const filteredProjects = projects.filter(proj => {
+                if (this.type === 'active') {
+                    console.log('hi there', this.type);
+                    return proj.status === ProjectStatus.Active;
+                }
+                return proj.status === ProjectStatus.Finished;
+            });
+            this.assignedProjects = filteredProjects;
             this.renderProjects();
         });
         this.attach();
@@ -104,6 +110,7 @@ class ProjectList {
     }
     renderProjects() {
         const listEl = document.getElementById(`${this.type}-projects-list`);
+        listEl.innerHTML = ''; // prevent appending doubles
         for (const proj of this.assignedProjects) {
             const listItem = document.createElement('li');
             console.log('hi', this.assignedProjects);
