@@ -48,7 +48,7 @@ class ProjectState extends State {
     }
     changeStatus(projectId, newStatus) {
         const project = this.projects.find(proj => proj.id === projectId);
-        if (project) {
+        if (project && project.status !== newStatus) {
             project.status = newStatus;
             this.updateListeners();
         }
@@ -179,7 +179,6 @@ class ProjectList extends Component {
         projState.addListener((projects) => {
             const filteredProjects = projects.filter(proj => {
                 if (this.type === 'active') {
-                    console.log('hi there', this.type);
                     return proj.status === ProjectStatus.Active;
                 }
                 return proj.status === ProjectStatus.Finished;
@@ -262,7 +261,6 @@ class ProjectInput extends Component {
         const userInput = this.gatherUserInput();
         if (Array.isArray(userInput)) {
             const [title, description, people] = userInput;
-            console.log(userInput);
             projState.addProject(title, description, people);
         }
         this.clearInputs();
