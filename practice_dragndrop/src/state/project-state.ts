@@ -1,4 +1,4 @@
-import { Project, ProjectStatus } from '../models/project.js';
+import { Project, ProjectStatus } from '../models/project';
 
 // we don't care about return value and input is generic
 type Listener<T> = (items: T[]) => void;
