@@ -57,3 +57,5 @@ function add(input: number | string){
 (convert to number? `+variableName or ParseFloat(variableName)`)
 
 #### Type Aliases/Custom Types
+
+`npm i --save-dev typescript webpack webpack-cli webpack-dev-server ts-loader`
