@@ -3,7 +3,6 @@ import * as L from 'leaflet';
 
 const form = document.querySelector('form')!;
 const address = document.getElementById('address')! as HTMLInputElement;
-const button = document.getElementById('clear-map')! as HTMLButtonElement;
 const map = L.map('map');
 type OpenCageResult = {
   results: { geometry: { lat: number, lng: number }}[],
@@ -33,12 +32,4 @@ function searchHandler(event: Event) {
 
 };
 
-function clearMap(){
-  let map = L.map('map');
-  map.off()
-  map.remove();
-}
-
 form.addEventListener('submit', searchHandler);
-
-button.addEventListener('click', clearMap);
