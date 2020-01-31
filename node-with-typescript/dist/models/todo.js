@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Todo {
+class ToDo {
     // shorthand initialization
     constructor(id, text) {
         this.id = id;
         this.text = text;
     }
 }
-exports.Todo = Todo;
+exports.ToDo = ToDo;
