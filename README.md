@@ -168,3 +168,23 @@ interface SquareConfig {
 
 - with CRA - https://create-react-app.dev/docs/adding-typescript/
 `yarn create react-app my-app --template typescript`
+
+#### NodeJS & TypeScript
+```
+npm init
+tsc --init // add target: "es2018", module: "commonjs", moduleResolution: "node", outDir: "./dist", rootDir: "/src"
+npm i --save express body-parser  
+npm i --save-dev nodemon
+mkdir src
+cd src
+touch app.ts
+npm i --save-dev @types/node
+npm i --save-dev @types/express
+tsc -w
+node app.js
+```
+Can use imports rather than require
+e.g.
+```javascript
+import express, { Request, Response, NextFunction} from 'express';
+```
