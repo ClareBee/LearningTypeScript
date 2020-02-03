@@ -147,11 +147,61 @@ interface SquareConfig {
 - an interface can `extend` another interface
 
 #### Advanced Types
+- Intersection Types - && (e.g. w interfaces)
+- Type Guards re: interfaces = if ( blah instanceof MyClass ) {}
+  >The right side of the instanceof needs to be a constructor function, and TypeScript will narrow down to: - the type of the function’s prototype property if its type is not any; - the union of types returned by that type’s construct signatures, in that order.
+- Discriminated Unions:
+ -- Types that have a common, singleton type property — the discriminant.
+ -- A type alias that takes the union of those types — the union.
+ -- Type guards on the common property. (eg. via switch statement)
+
+ - Type Casting e.g. 'as HTMLElement'
+ - Index Properties - esp for flexible shapes/Interfaces where you don't know the property name or the property count, but you do know they're all strings!
+ ```typescript
+ interface Errors {
+   [prop: string]: string
+ }
+ ```
+ - Function Overloads - e.g. multiple ways of calling fn w different params (write the function above w/o curly braces but with specific types => so you can predict return type)
+ - Optional Chaining - e.g. `let x = foo?.bar.baz();`
+ - Nullish Coalescing - e.g. `let x = foo ?? bar();`
+
 
 #### Generics
+- for flexibility: take the type that's passed in
+- https://www.typescriptlang.org/docs/handbook/generics.html
+```typescript
+function identity<T>(arg: T): T {
+    return arg;
+}
 
+let myIdentity: <T>(arg: T) => T = identity;
+```
 #### Decorators
+- annotations & meta-programming syntax for class declarations and members
+- experimental feature
+`tsconfig.json`
+```json
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "experimentalDecorators": true
+    }
+}
+```
+>A Decorator is a special kind of declaration that can be attached to a class declaration, method, accessor, property, or parameter. Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
 
+- decorator factories?
+>If we want to customise how a decorator is applied to a declaration, we can write a decorator factory. A Decorator Factory is simply a function that returns the expression that will be called by the decorator at runtime.
+
+```typescript
+function color(value: string) { // this is the decorator factory
+    return function (target) { // this is the decorator
+        // do something with 'target' and 'value'...
+    }
+}
+```
+- https://www.typescriptlang.org/docs/handbook/decorators.html
 #### Useful resources:
 
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
