@@ -88,8 +88,8 @@ let userInput: unknown;
 - fewer requests => `bundle.js`
 - optimisation/build steps also possible
 - `web-dev-server` = builds project & automatically reloads on changes
+- `npm i --save-dev typescript webpack webpack-cli webpack-dev-server ts-loader`
 
-`npm i --save-dev typescript webpack webpack-cli webpack-dev-server ts-loader`
 ---
 #### ES6
 e.g. arrow functions
