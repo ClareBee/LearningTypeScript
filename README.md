@@ -1,4 +1,6 @@
-## TypeScript: https://www.typescriptlang.org/
+## TypeScript:
+From https://www.udemy.com/course/understanding-typescript/ and extended with OpenCage Geocoder API for maps without credit card details 🎉
+- https://www.typescriptlang.org/
 - checking at compile time, not just runtime!
 ----
 Basic Setup:
