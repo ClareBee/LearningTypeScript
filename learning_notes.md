@@ -5,9 +5,6 @@
 - string
 - number (integer + floats)
 - boolean (true + false only)
-
-Type Inference (when previously declared)
-
 - object
 e.g.
 ```javascript
@@ -19,10 +16,30 @@ const offer: {
   tags: ['bargain', 'deal']
 }
 ```
-- Array (e.g. `any[]`, `string[]`)
-- Tuple (fixed-length array)
-- Enum: https://www.typescriptlang.org/docs/handbook/enums.html
+- array (e.g. `any[]`, `string[]`)
+- tuple (fixed-length array)
+- enum: https://www.typescriptlang.org/docs/handbook/enums.html
 - any
+- void
+- null & undefined
+- never
+
+#### Type Assertions - when you know more than TypeScript!
+1. “angle-bracket” syntax:
+
+```
+let someValue: any = "this is a string";
+
+let strLength: number = (<string>someValue).length;
+```
+2. as-syntax:
+```
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;
+```
+#### Type Inference 
+- e.g. when vars are initialised
+- when possible to make a 'best guess' from overall types or location
 
 #### Union Types
 e.g.
@@ -44,7 +61,7 @@ type MyType = {
 
 type AnotherType = number | string;
 ```
-
+---
 #### Function Types - params & return type
 - `void` for no return; `never` will never return anything!
 - callback functions can return something, even if the argument on which they're passed does NOT expect a returned value!
@@ -65,7 +82,7 @@ function buildName(firstName: string, lastName?: string) {
 ```javascript
 let userInput: unknown;
 ```
-
+---
 #### Webpack
 - bundling/build orchestration tool
 - fewer requests => `bundle.js`
@@ -73,18 +90,19 @@ let userInput: unknown;
 - `web-dev-server` = builds project & automatically reloads on changes
 
 `npm i --save-dev typescript webpack webpack-cli webpack-dev-server ts-loader`
-
+---
 #### ES6
 e.g. arrow functions
 ```javascript
 let myAdd: (baseValue: number, increment: number) => number =
     function(x: number, y: number): number { return x + y; };
 ```
+---
 
 #### Classes
-- classes = blueprints for JS objects
+- classes => blueprints for JS objects
 - shorthand initialisation using access modifiers in constructor
-- readonly properties: must be initialised at their declaration or in the constructor
+- **readonly** properties: must be initialised at their declaration or in the constructor
 
 ```javascript
 class Doggo {
@@ -98,13 +116,14 @@ let pupper = new Doggo("Spike");
 pupper.name = "bob" // error! name is readonly.
 
 ```
-___
 
 - **private**:class only; **public**: everywhere; **protected**: in class and in those inheriting from it
 - **getters and setters**: `get()`, `set(value)` (get with no set = readonly!)
 - **static** methods (directly on the class, not on an instance)
 - **abstract** classes = not to be instantiated, only extended
 - **singletons** - one only e.g. for global state?
+
+---
 
 #### Interfaces
 - TypeScript feature - not compiled/instantiated!
@@ -182,7 +201,10 @@ function color(value: string) { // this is the decorator factory
 }
 ```
 - https://www.typescriptlang.org/docs/handbook/decorators.html
-#### Useful resources:
+
+---
+
+### Useful resources:
 
 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 > repo of extra Types for 3rd party libraries etc, declaration files = `.d.ts`
@@ -192,14 +214,14 @@ function color(value: string) { // this is the decorator factory
 
 [class-transformer](https://github.com/typestack/class-transformer)
 > Proper decorator-based transformation / serialization / deserialization of plain javascript objects to class constructors
-
-#### React & TypeScript
+---
+### React & TypeScript
 - from the ground up: https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
 
 - with CRA - https://create-react-app.dev/docs/adding-typescript/
 `yarn create react-app my-app --template typescript`
-
-#### NodeJS & TypeScript
+---
+### NodeJS & TypeScript
 ```
 npm init
 tsc --init // add target: "es2018", module: "commonjs", moduleResolution: "node", outDir: "./dist", rootDir: "/src"
