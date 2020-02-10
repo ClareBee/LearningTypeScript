@@ -11,12 +11,21 @@ Add:
 ```json
 "outDir": "dist",
 "sourceMap": true
-  ```
+```
 
 ```
-<!-- lite server -->
 npm start
 <!-- watch mode -->
 tsc -w
 ```
 ----
+With Webpack:
+```html
+<script src="dist/bundle.js" defer></script>
+```
+---
+Map Search with OpenCage Geocoder API: https://opencagedata.com/
+<img src="./opencage.jpg" alt="map"/>
+---
+Basic Drag and Drop: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API
+<img src="./dragdrop.jpg" alt="drag and drop" />
